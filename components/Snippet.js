@@ -26,7 +26,7 @@ export default function Snippet({ snippet, snippetDeleted }) {
                 <h2 className="text-xl text-gray-800 font-bold">
                     {snippet.data.name}
                 </h2>
-                <span className="font-bold text-xs text-red-800 px-2 py-1 rounded-lg ">
+                <span className="font-bold text-xs text-gray-800 px-2 py-1 rounded-lg ">
                     {snippet.data.language}
                 </span>
             </div>
