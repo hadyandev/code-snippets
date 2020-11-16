@@ -4,6 +4,17 @@ const q = faunadb.query;
 
 const getSnippets = async () => {
     //TODO: get snippets
+    const {data} = await faunaClient.query(
+        q.Map(q.Paginate(q.Documents(q.Collection('snippets'))),
+            q.Lambda('ref', q.Get(q.Var('ref'))
+        ))
+    );
+    const snippets = data.map(snippet => {
+        snippet.id = snippet.ref.id;
+        delete snippet.ref;
+        return snippet;
+    })
+    return snippets;
 };
 
 const getSnippetById = async (id) => {
